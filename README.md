@@ -52,9 +52,8 @@ function startEditorServers(ports) {
 var CONFIG = {
     'resources': [
         {
-            // resource is some value identify this resource
-            // by default it should be the hostname to match
-            resource: 'localhost:8000',
+            // The name of the selector should
+            selector: loadfire.selectors.host('localhost:8000'),
 
             // List of backends to hit
             backends: EDITOR_SERVERS,
@@ -62,7 +61,7 @@ var CONFIG = {
             // Load balancing pattern
             // As of now a few are builtin
             // random, roundrobin, sticky
-            pattern: 'roundrobin'
+            balancer: loadfire.balancers.roundrobin,
         }
     ],
 
@@ -80,7 +79,8 @@ function main() {
     // Now start our load balancer
     loadServer.run();
 
-    // Check out localhost:8000
+    // Check out localhost:8000 in a browser (must be localhost and not
+    // 127.0.0.1 - the name must match the selector name.
     // Refresh a few times and you'll see different port numbers appear
     // depending on which http server the requests are proxied to
     // since we are using the roundrobin pattern it will cycle through them
