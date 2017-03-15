@@ -25,7 +25,7 @@ var CONFIG = {
 
             // Load balancing pattern
             // As of now a few are builtin
-            // random, roundrobin, sticky
+            // random, roundrobin
             balancer: function(backends, req, cb) {
                 return cb(null, {
                     host: 'localhost',

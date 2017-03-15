@@ -65,7 +65,7 @@ var CONFIG = {
 
             // Load balancing pattern
             // As of now a few are builtin
-            // random, roundrobin, sticky
+            // random, roundrobin
             balancer: loadfire.balancers.roundrobin,
 
             middleware: [

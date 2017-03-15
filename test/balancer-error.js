@@ -44,7 +44,7 @@ var CONFIG = {
 
             // Load balancing pattern
             // As of now a few are builtin
-            // random, roundrobin, sticky
+            // random, roundrobin
             balancer: function(backends, req, cb) {
                 // Fail first
                 cb(new Error('Failed balancing because of whatever'));
